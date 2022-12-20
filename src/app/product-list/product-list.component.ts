@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from '../products';
 import { ProductService } from '../services/product.service';
 
+
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -38,7 +40,7 @@ export class ProductListComponent {
     
     this.productService.addNewProduct(name,price,description).subscribe(result=>{
       
-      if(result){
+      if (result) {
         this.getProducts();
       }
     })
@@ -46,7 +48,7 @@ export class ProductListComponent {
   }
 
   deleteProduct(index:number):void{
-    this.productService.deleteProduct(this.products[index]._id).subscribe(result=>{
+    this.productService.deleteProduct(this.products[index].id).subscribe(result=>{
 
       if(result){
         this.getProducts();

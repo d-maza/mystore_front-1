@@ -20,13 +20,12 @@ export class ProductService {
   addNewProduct(name:string,price:number,description:string):Observable<object>{
 
     const data = {name:name,price:price,description:description};
-
-    return this.httpClient.post(this.urlpost,{info:data},{observe:'body'}).pipe(catchError(this.handleError<any>('addNewProduct')));
+    return this.httpClient.post(this.urlpost,data,{observe:'body'}).pipe(catchError(this.handleError<any>('addNewProduct')));
   }
 
   deleteProduct(id:string):Observable<object>{
-
-    return this.httpClient.delete(this.urldelete+'/'+id,{observe:'body'}).pipe(catchError(this.handleError<any>('deleteProduct')))
+console.log(id);
+    return this.httpClient.delete(this.urldelete+'/'+id).pipe(catchError(this.handleError<any>('deleteProduct')))
   }
 
   private handleError<T>(operation = 'opearation',result?:T){
